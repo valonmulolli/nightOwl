@@ -1,29 +1,34 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import Button from '../components/Button';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import BottomSheet from '../components/BottomSheet';
+import { StyleSheet, Text, View } from "react-native";
+import React, { useRef } from "react";
+import Button from "../components/Button";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import BottomSheet, { BottomSheetMethods } from "../components/BottomSheet";
 
-type Props = {}
+type Props = {};
 
 const Setting = (props: Props) => {
   const insets = useSafeAreaInsets();
+  const BottomSheetRef = useRef<BottomSheetMethods>(null);
   return (
-    <View style={[styles.container, {
-      paddingTop: insets.top
-    },]}>
-      <Button />
-      <BottomSheet/>
-    </View >
-  )
-}
+    <View
+      style={[
+        styles.container,
+        {
+          paddingTop: insets.top,
+        },
+      ]}
+    >
+      <Button bottomSheetRef={BottomSheetRef}/>
+      <BottomSheet ref={BottomSheetRef}/>
+    </View>
+  );
+};
 
-export default Setting
+export default Setting;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-
+    backgroundColor: "#fffff1",
   },
 });

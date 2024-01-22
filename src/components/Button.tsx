@@ -1,18 +1,22 @@
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
 import React from "react";
+import { BottomSheetMethods } from "./BottomSheet";
 
-type Props = {};
+type Props = {
+  bottomSheetRef: React.RefObject<BottomSheetMethods>;
+};
 
-const Button = (props: Props) => {
+const Button = ({ bottomSheetRef }: Props) => {
   return (
-    <TouchableWithoutFeedback onPress={() => {
-      console.log("Pressed");
-    }}>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        bottomSheetRef.current?.open();
+      }}
+    >
       <View style={styles.container}>
         <Text style={styles.text}>Change theme</Text>
       </View>
     </TouchableWithoutFeedback>
-    // ?? time stamp 08:11
   );
 };
 
@@ -20,7 +24,7 @@ export default Button;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#F0F0F0",
+    backgroundColor: "#00fdff",
     padding: 20,
     marginTop: 10,
     marginHorizontal: 30,
@@ -36,7 +40,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: "500",
-    color: "black",
+    color: "#fffff1",
     textAlign: "center",
   },
 });
